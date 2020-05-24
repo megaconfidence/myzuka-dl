@@ -2,6 +2,13 @@
 
 An **_audio_** downloading tool
 
+## Install
+```
+yarn global add myzuka-dl
+or
+npm insatll -g myzuka-dl
+```
+
 ## Usage
 
 Use like so `myzuka-dl <url>` ie:

@@ -14,7 +14,7 @@ const myzuka = async url => {
       const albumName = $(pageContent)
         .find('h1')
         .text();
-      const albumArt = $(pageContent)
+      const albumCover = $(pageContent)
         .find('.main-details img')
         .attr('src');
       const songs = $('.player-inline')
@@ -49,7 +49,7 @@ const myzuka = async url => {
         })
         .toArray();
 
-      return { albumName, albumArt, songs };
+      return { albumName, albumCover, songs };
     } else {
       throw new CustomError('FORBIDDEN');
     }

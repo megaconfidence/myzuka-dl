@@ -2,6 +2,22 @@
   "name": "myzuka-dl",
   "version": "1.0.0",
   "main": "index.js",
+  "description": "An audio downloading tool",
+  "keywords": [
+    "music download",
+    "audio download",
+    "mp3 download",
+    "album download",
+    "music",
+    "audio",
+    "mp3",
+    "download"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Confidence-Okoghenun/myzuka-dl.git"
+  },
+  "homepage": "https://github.com/Confidence-Okoghenun/myzuka-dl",
   "author": "Confidence Okoghenun <confidenceboi@gmail.com>",
   "license": "MIT",
   "scripts": {

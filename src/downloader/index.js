@@ -4,22 +4,24 @@ import download from 'download';
 import downloadsFolder from 'downloads-folder';
 import forEach from '../utils/foreach';
 
-const downloader = async ({ albumName, albumArt, songs }) => {
+const downloader = async ({ albumName, albumCover, songs }) => {
   try {
     log('starting download');
     const length = songs.length;
-    const downloadPath = await makeDir(`${downloadsFolder()}/${albumName}`);
+    const downloadPath = await makeDir(
+      `${downloadsFolder()}/${albumName.replace('/', '-')}`
+    );
 
-    if (albumArt) {
-      const ext = albumArt
+    if (albumCover) {
+      const ext = albumCover
         .split('/')
         .reverse()[0]
         .split('.')
         .pop();
       if (/(?:png|jpg|jpeg|svg|gif)$/.test(ext)) {
-        await download(albumArt, downloadPath, { filename: `cover.${ext}` });
+        await download(albumCover, downloadPath, { filename: `cover.${ext}` });
       } else {
-        await download(albumArt, downloadPath);
+        await download(albumCover, downloadPath);
       }
     }
 

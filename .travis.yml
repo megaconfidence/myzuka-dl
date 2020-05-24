@@ -1,6 +1,7 @@
 language: node_js
+before_deploy: 'yarn build'
 node_js:
-  - "12.13"
+  - '12.13'
 deploy:
   provider: npm
   email: confidenceboi@gmail.com

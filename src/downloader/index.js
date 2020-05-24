@@ -11,7 +11,16 @@ const downloader = async ({ albumName, albumArt, songs }) => {
     const downloadPath = await makeDir(`${downloadsFolder()}/${albumName}`);
 
     if (albumArt) {
-      await download(albumArt, downloadPath);
+      const ext = albumArt
+        .split('/')
+        .reverse()[0]
+        .split('.')
+        .pop();
+      if (/(?:png|jpg|jpeg|svg|gif)$/.test(ext)) {
+        await download(albumArt, downloadPath, { filename: `cover.${ext}` });
+      } else {
+        await download(albumArt, downloadPath);
+      }
     }
 
     await forEach(songs, async ({ src, filename }, i) => {
@@ -22,7 +31,7 @@ const downloader = async ({ albumName, albumArt, songs }) => {
       return;
     });
 
-    log('completed download');
+    log('completed download. Files saved in: ' + downloadPath);
   } catch (err) {
     if (err.code) return console.error('ERROR: ' + err.code);
     console.log(err);
@@ -30,3 +39,4 @@ const downloader = async ({ albumName, albumArt, songs }) => {
 };
 
 export default downloader;
+/[.]/.exec('filename.js') ? /[^.]+$/.exec('filename.js') : undefined;

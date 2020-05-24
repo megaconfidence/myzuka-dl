@@ -11,16 +11,18 @@ const myzuka = async url => {
     const pageContent = $('body').find('#bodyContent');
 
     if (pageContent.length) {
-      const name = $(pageContent)
+      const albumName = $(pageContent)
         .find('h1')
         .text();
       const songs = $('.player-inline')
         .map((i, elem) => {
-          const src = $(elem)
-            .find('span.ico')
-            .data('url');
+          const src =
+            'https://myzuka.club' +
+            $(elem)
+              .find('span.ico')
+              .data('url');
 
-          const name = $(elem)
+          const filename = $(elem)
             .find('span.ico')
             .attr('data-title')
             .split(' - ')[1];
@@ -33,7 +35,7 @@ const myzuka = async url => {
 
           const song = {
             src,
-            name
+            filename
           };
 
           if (isLost) {
@@ -44,12 +46,13 @@ const myzuka = async url => {
         })
         .toArray();
 
-      return { name, songs };
+      return { albumName, songs };
     } else {
-      throw new CustomError('FORBIDDEN')
+      throw new CustomError('FORBIDDEN');
     }
-  } catch ({code}) {
-    console.error('ERROR: '+code);
+  } catch (err) {
+    if (err.code) return console.error('ERROR: ' + err.code);
+    console.log(err);
   }
 };
 

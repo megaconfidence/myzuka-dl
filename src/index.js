@@ -1,37 +1,34 @@
 import { argv } from 'yargs';
 import resolvers from './resolvers';
+import CustomError from './utils/customerror';
+import downloader from './downloader';
 
 const { url } = argv;
 
-const sample = {
-    name: 'Dan Croll - From Nowhere (2013)',
-    songs: [
-      {
-        src: '/Song/Play/3382176?t=637259416253685454&s=2375122c89656fea231520bc9fad5077',
-        name: 'From Nowhere'
-      },
-      {
-        src: '/Song/Play/3382177?t=637259416253685454&s=e8c6b871bcad5801c798c1cabd146c05',
-        name: 'Compliment Your Soul'
-      },
-      {
-        src: '/Song/Play/3382178?t=637259416253841712&s=87c3ad37121df503dc12d07883c580ae',
-        name: 'Wanna Know'
-      },
-      {
-        src: '/Song/Play/3382179?t=637259416253841712&s=5fd2633faa8e3c5aaf0c88b285ae2ee8',
-        name: 'Only Ghost'
-      },
-      {
-        src: '/Song/Play/3382180?t=637259416253841712&s=946c76fe5895331214651662b0016053',
-        name: 'From Nowhere (Baardsen Remix)'
-      }
-    ]
-  };
+// const sample = {
+//   albumName: 'Dan Croll - From Nowhere (2013)',
+//   songs: [
+//     {
+//       src:
+//         'https://myzuka.club/Song/Play/1432280?t=637259439515667318&s=302b50eb64710407d6aae4c4261f7cae',
+//       filename: 'Jailer'
+//     }
+//   ]
+// };
 
 (async () => {
-  if (url.includes('myzuka.club')) {
-    const result = await resolvers.myzuka(url);
-    console.log(result);
+  try {
+    console.time('myzuka-dl');
+    if (!url) throw new CustomError('NOURL');
+    if (url.includes('myzuka.club')) {
+      const album = await resolvers.myzuka(url);
+      await downloader(album);
+      console.timeEnd('myzuka-dl');
+      process.exit();
+    }
+    // downloader(sample);
+  } catch (err) {
+    if (err.code) return console.error('ERROR: ' + err.code);
+    console.log(err);
   }
 })();

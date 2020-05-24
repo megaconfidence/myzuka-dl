@@ -8,10 +8,12 @@
     "build": "babel src --out-dir dist",
     "dev": "nodemon --exec yarn restart",
     "restart": "rimraf dist && yarn build && yarn start",
-    "start": "node dist/index.js"
+    "start": "node dist/index.js",
+    "sample": "node dist/index.js --url=https://myzuka.club/Album/396328/Dan-Croll-From-Nowhere-2013"
   },
   "dependencies": {
     "cheerio": "^1.0.0-rc.3",
+    "download": "^8.0.0",
     "node-fetch": "^2.6.0",
     "yargs": "^15.3.1"
   },

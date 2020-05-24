@@ -41,4 +41,3 @@ const downloader = async ({ albumName, albumCover, songs }) => {
 };
 
 export default downloader;
-/[.]/.exec('filename.js') ? /[^.]+$/.exec('filename.js') : undefined;

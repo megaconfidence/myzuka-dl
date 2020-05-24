@@ -1,8 +1,9 @@
-# myzuka-dl
+# myzuka-dl [![Build Status](https://travis-ci.org/Confidence-Okoghenun/myzuka-dl.svg?branch=master)](https://travis-ci.org/Confidence-Okoghenun/myzuka-dl)
 
 An **_audio_** downloading tool
 
 ## Install
+
 ```
 yarn global add myzuka-dl
 or

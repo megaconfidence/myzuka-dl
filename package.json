@@ -20,6 +20,9 @@
   "homepage": "https://github.com/Confidence-Okoghenun/myzuka-dl",
   "author": "Confidence Okoghenun <confidenceboi@gmail.com>",
   "license": "MIT",
+  "bin": {
+    "myzuka-dl": "./dist/index.js"
+  },
   "scripts": {
     "build": "babel src --out-dir dist",
     "dev": "nodemon --exec yarn restart",

@@ -1,0 +1,6 @@
+src
+.babelrc
+.travis.yml
+.eslintrc.js
+.prettierrc.js  
+nodemon.json

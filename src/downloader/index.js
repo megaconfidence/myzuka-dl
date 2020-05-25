@@ -27,7 +27,7 @@ const downloader = async ({ albumName, albumCover, songs }) => {
 
     await forEach(songs, async ({ src, filename }, i) => {
       filename = `${i + 1}. ${filename.replace('/', '-')}`;
-      const percent = ((i + 1) * 100) / length + '%';
+      const percent = Math.round(((i + 1) * 100) / length) + '%';
       await download(src, downloadPath, { filename });
       log(`downloaded [${filename}](${percent}) `);
       return;

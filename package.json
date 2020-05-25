@@ -1,6 +1,6 @@
 {
   "name": "myzuka-dl",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "main": "index.js",
   "description": "An audio downloading tool",
   "keywords": [

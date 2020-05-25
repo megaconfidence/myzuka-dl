@@ -1,13 +1,13 @@
 # myzuka-dl [![Build Status](https://travis-ci.org/Confidence-Okoghenun/myzuka-dl.svg?branch=master)](https://travis-ci.org/Confidence-Okoghenun/myzuka-dl)
 
-An **_audio_** downloading tool
+A **_music album_** downloading tool. `myzuka-dl` lets you download entire music albums with a given url.
 
 ## Install
 
 ```
-yarn global add myzuka-dl
-or
-npm insatll -g myzuka-dl
+$ yarn global add myzuka-dl
+//or
+$ npm insatll -g myzuka-dl
 ```
 
 ## Usage
@@ -15,10 +15,10 @@ npm insatll -g myzuka-dl
 Use like so `myzuka-dl <url>` ie:
 
 ```
-myzuka-dl https://myzuka.club/Album/879283/Dan-Croll-Compliment-Your-Soul-2013
+$ myzuka-dl https://myzuka.club/Album/879283/Dan-Croll-Compliment-Your-Soul-2013
 ```
 
-Downloaded files are saved in your `downloads` folder.
+> Note: Downloaded album is saved in your `downloads` folder.
 
 ## Supported sites
 

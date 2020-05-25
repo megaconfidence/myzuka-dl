@@ -4,7 +4,7 @@ import log from './utils/log';
 import { isURL } from 'validator';
 import resolvers from './resolvers';
 import downloader from './downloader';
-import CustomError from './utils/customerror';
+import CustomError from './utils/error';
 
 const start = async () => {
   try {

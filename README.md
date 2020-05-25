@@ -12,6 +12,8 @@ $ npm insatll -g myzuka-dl
 
 ## Usage
 
+![cli usage example](src/img/sample.jpg)
+
 Use like so `myzuka-dl <url>` ie:
 
 ```

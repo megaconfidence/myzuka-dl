@@ -1,8 +1,8 @@
 {
   "name": "myzuka-dl",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "main": "index.js",
-  "description": "An audio downloading tool",
+  "description": "A music album downloading tool",
   "keywords": [
     "music download",
     "audio download",
@@ -11,6 +11,7 @@
     "music",
     "audio",
     "mp3",
+    "album",
     "download"
   ],
   "repository": {

@@ -1,13 +1,18 @@
 # myzuka-dl [![Build Status](https://travis-ci.org/Confidence-Okoghenun/myzuka-dl.svg?branch=master)](https://travis-ci.org/Confidence-Okoghenun/myzuka-dl)
 
-A **_music album_** downloading tool. `myzuka-dl` lets you download entire music albums with urls from sites not supported by `youtube-dl`
+A **_music album_** downloading tool. `myzuka-dl` lets you download entire music albums with urls from sites not supported by `youtube-dl`.
+
+## Platforms
+`myzuka-dl` is available on Linux, Windows, Mac Os and Android.
+
+For use with Android, make sure you have [termux](https://termux.com/) installed, after which you need to install `nodejs`, `python` and `make` as packages in termux. Also, don't forget to give termux storage access with this command: `termux-setup-storage`.
 
 ## Install
 
 ```
-$ yarn global add myzuka-dl
-//or
 $ npm install -g myzuka-dl
+//or
+$ yarn global add myzuka-dl
 ```
 
 ## Usage

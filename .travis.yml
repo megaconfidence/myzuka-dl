@@ -6,7 +6,7 @@ deploy:
   provider: npm
   email: confidenceboi@gmail.com
   api_key:
-    secure: MIMIFD62lRZKlt+PKrqMQG/BF0IIStEzHiLe+RJY+YvIOcSeUK4eINYT2Rj0eOLtkLbotZvuSWWA/zZx7Xkx4kCLd7/SfQScz3xRAVokJGwMbDUSflWmeMzRybfuiIzngWKPRN96Fsbll8iecn1GVFZ7MhsYQmr/SxYjG+E/hogDpB9UmpNhD5mOH+PHwZtCJHxOtjZ75UBW7OS0eDRua8CZDscu1br2hTt5caGsoi2X4xd5hmaYs2TqogNBUNY/el9/EI1iqzuBnLEUg/mlL5Sm9dc/W/IXae4OkMgguPDoGE9T/T6AWamACaoMAvGHbi5ZUjkv69V9cDI1tvoXShcwcCQgiojVqrAiDkLOJY1EmrfCFz6FNeK/vTUBR78c2uy0IBRxZNr4vEfAnPY/Tk6DkxYaf9SQPHIpUSA1ofRNpu512JefH6RkcSECxK+aJ7xPZxYzw7itoPRkF8ECBjOQa3chIErWEU1N4tqmJLYxlcRCo4Zg2JNJUP6gvM/ysKr3TaXvEwDbu3NYAUR60aAVb360OETIEFQnxy1oGJVlHZ72t18qDfRYEqOJhIsLd6nYvbaq5mZ+W1L2VtiZsB/Rp4zRf6quz/C0fcyMBQ7xtsiby47Iw3IbKoKi9MkJb+OLQQfpCviF9qLsIF+MIcm8bB90eQfJyssGgk88d14=
+    secure: $NPM_API_KEY
   on:
     tags: true
     repo: Confidence-Okoghenun/myzuka-dl

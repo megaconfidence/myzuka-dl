@@ -2,43 +2,34 @@ import cheerio from 'cheerio';
 import fetch from 'node-fetch';
 import CustomError from '../utils/error';
 
-const myzuka = async url => {
+const myzuka = async (url) => {
   try {
     const page = await fetch(url)
-      .then(res => res.text())
-      .then(body => body);
+      .then((res) => res.text())
+      .then((body) => body);
     const $ = cheerio.load(page);
     const pageContent = $('body').find('#bodyContent');
 
     if (pageContent.length) {
-      const albumName = $(pageContent)
-        .find('h1')
-        .text();
-      const albumCover = $(pageContent)
-        .find('.main-details img')
-        .attr('src');
+      const albumName = $(pageContent).find('h1').text();
+      const albumCover = $(pageContent).find('.main-details img').attr('src');
       const songs = $('.player-inline')
         .map((i, elem) => {
           const src =
-            'https://myzuka.club' +
-            $(elem)
-              .find('span.ico')
-              .data('url');
+            'https://myzuka.club' + $(elem).find('span.ico').data('url');
 
           const filename = $(elem)
             .find('span.ico')
             .attr('data-title')
             .split(' - ')[1];
 
-          const isLost = $(elem)
-            .find('.details .label-danger')
-            .text()
+          const isLost = $(elem).find('.details .label-danger').text()
             ? true
             : false;
 
           const song = {
             src,
-            filename
+            filename,
           };
 
           if (isLost) {
@@ -48,7 +39,6 @@ const myzuka = async url => {
           }
         })
         .toArray();
-
       return { albumName, albumCover, songs };
     } else {
       throw new CustomError('FORBIDDEN');

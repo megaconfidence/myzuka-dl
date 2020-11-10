@@ -2,17 +2,13 @@ import os from 'os';
 import makeDir from 'make-dir';
 import log from '../utils/log';
 import download from 'download';
-import downloadsFolder from 'downloads-folder';
 import forEach from '../utils/foreach';
+import downloadsFolder from 'downloads-folder';
 
 const dl = async (downloadPath, albumCover, songs) => {
   const length = songs.length;
   if (albumCover) {
-    const ext = albumCover
-      .split('/')
-      .reverse()[0]
-      .split('.')
-      .pop();
+    const ext = albumCover.split('/').reverse()[0].split('.').pop();
     if (/(?:png|jpg|jpeg|svg|gif)$/.test(ext)) {
       await download(albumCover, downloadPath, { filename: `cover.${ext}` });
     } else {
@@ -23,7 +19,7 @@ const dl = async (downloadPath, albumCover, songs) => {
   await forEach(songs, async ({ src, filename }, i) => {
     filename = `${i + 1}. ${filename.replace('/', '-')}`;
     const percent = Math.round(((i + 1) * 100) / length) + '%';
-    await download(src, downloadPath, { filename });
+    await download(src, downloadPath, { filename: `${filename}.mp3` });
     log(`downloaded [${filename}](${percent}) `);
     return;
   });

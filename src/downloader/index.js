@@ -4,9 +4,12 @@ import log from '../utils/log';
 import download from 'download';
 import forEach from '../utils/foreach';
 import downloadsFolder from 'downloads-folder';
+import porgressbar from '../utils/porgressbar';
 
 const dl = async (downloadPath, albumCover, songs) => {
   const length = songs.length;
+  const dList = songs.map((s, i) => `[${i + 1}/${length}] ${s.filename}`);
+
   if (albumCover) {
     const ext = albumCover.split('/').reverse()[0].split('.').pop();
     if (/(?:png|jpg|jpeg|svg|gif)$/.test(ext)) {
@@ -16,11 +19,12 @@ const dl = async (downloadPath, albumCover, songs) => {
     }
   }
 
+  const done = porgressbar(dList);
+
   await forEach(songs, async ({ src, filename }, i) => {
-    filename = `${i + 1}. ${filename.replace('/', '-')}`;
-    const percent = Math.round(((i + 1) * 100) / length) + '%';
-    await download(src, downloadPath, { filename: `${filename}.mp3` });
-    log(`downloaded [${filename}](${percent}) `);
+    filename = `${i + 1}. ${filename.replace('/', '-')}.mp3`;
+    await download(src, downloadPath, { filename });
+    done(dList[i]);
     return;
   });
 };

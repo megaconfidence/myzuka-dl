@@ -1,18 +1,18 @@
 #!/usr/bin/env node
 import { argv } from 'yargs';
 import log from './utils/log';
-import brand from './utils/brand';
 import { isURL } from 'validator';
 import resolvers from './resolvers';
 import downloader from './downloader';
 import CustomError from './utils/error';
+import branding from './utils/branding';
 
 const start = async () => {
   try {
     const url = argv._[0];
     if (!url || !isURL(url)) throw new CustomError('INVALIDURL');
     if (url.includes('myzuka.club')) {
-      brand();
+      branding();
       const album = await resolvers.myzuka(url);
       await downloader(album);
     }

@@ -1,6 +1,6 @@
 {
   "name": "myzuka-dl",
-  "version": "1.1.6",
+  "version": "1.1.7",
   "main": "index.js",
   "description": "A music album downloading tool",
   "keywords": [
@@ -32,7 +32,7 @@
     "restart": "rimraf dist && yarn build && yarn start",
     "start": "node dist/index.js",
     "test": "echo \"No test specified\"",
-    "publish": "np"
+    "publish": "npm login && np"
   },
   "devDependencies": {
     "@babel/cli": "^7.12.1",

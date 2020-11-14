@@ -1,6 +1,6 @@
 import cheerio from 'cheerio';
 import fetch from 'node-fetch';
-import CustomError from '../utils/error';
+import { CustomError } from '../utils';
 
 const myzuka = async (url) => {
   try {

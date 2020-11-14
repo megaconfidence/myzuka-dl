@@ -1,7 +1,7 @@
-const forEach = async (array, callback) => {
+const ForEach = async (array, callback) => {
   for (let index = 0; index < array.length; index++) {
     await callback(array[index], index, array);
   }
 };
 
-export default forEach;
+export default ForEach;

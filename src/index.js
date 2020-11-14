@@ -1,22 +1,24 @@
 #!/usr/bin/env node
 import { argv } from 'yargs';
-import log from './utils/log';
 import { isURL } from 'validator';
 import resolvers from './resolvers';
+import readline from 'readline-sync';
 import downloader from './downloader';
-import CustomError from './utils/error';
-import branding from './utils/branding';
+import { Branding, Log, CustomError, CustomLog } from './utils';
 
 const start = async () => {
   try {
-    const url = argv._[0];
-    if (!url || !isURL(url)) throw new CustomError('INVALIDURL');
-    if (url.includes('myzuka.club')) {
-      branding();
-      const album = await resolvers.myzuka(url);
+    Branding();
+
+    const link = argv._[0] || readline.question(CustomLog('enter link: '));
+    if (!isURL(link)) throw new CustomError('INVALIDURL');
+
+    if (link.includes('myzuka.club')) {
+      const album = await resolvers.myzuka(link);
       await downloader(album);
     }
-    log('exiting');
+
+    Log('exiting');
     process.exit();
   } catch (err) {
     if (err.code) return console.error('ERROR: ' + err.code);

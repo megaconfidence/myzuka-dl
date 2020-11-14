@@ -1,14 +1,11 @@
 import os from 'os';
 import makeDir from 'make-dir';
-import log from '../utils/log';
 import download from 'download';
-import forEach from '../utils/foreach';
+import { ForEach, Log } from '../utils';
 import downloadsFolder from 'downloads-folder';
-import porgressbar from '../utils/porgressbar';
 
 const dl = async (downloadPath, albumCover, songs) => {
   const length = songs.length;
-  const dList = songs.map((s, i) => `[${i + 1}/${length}] ${s.filename}`);
 
   if (albumCover) {
     const ext = albumCover.split('/').reverse()[0].split('.').pop();
@@ -19,19 +16,18 @@ const dl = async (downloadPath, albumCover, songs) => {
     }
   }
 
-  const done = porgressbar(dList);
-
-  await forEach(songs, async ({ src, filename }, i) => {
-    filename = `${i + 1}. ${filename.replace('/', '-')}.mp3`;
-    await download(src, downloadPath, { filename });
-    done(dList[i]);
+  await ForEach(songs, async ({ src, filename }, i) => {
+    await download(src, downloadPath, {
+      filename: `${i + 1}. ${filename.replace('/', '-')}.mp3`,
+    });
+    Log(`[${i + 1}/${length}] ${filename}`);
     return;
   });
 };
 
 const downloader = async ({ albumName, albumCover, songs }) => {
   try {
-    log('starting download');
+    Log('starting download');
     const platform = process.platform;
     if (platform === 'android') {
       try {
@@ -40,10 +36,7 @@ const downloader = async ({ albumName, albumCover, songs }) => {
         );
 
         await dl(downloadPath, albumCover, songs);
-        log(
-          'completed download. Files saved in: ' +
-            `/downloads/${albumName.replace('/', '-')}`
-        );
+        Log('Files saved in: ' + `/downloads/${albumName.replace('/', '-')}`);
       } catch (err) {
         if (err.code) return console.error('ERROR: ' + err.code);
         console.log(err);
@@ -54,7 +47,7 @@ const downloader = async ({ albumName, albumCover, songs }) => {
       );
 
       await dl(downloadPath, albumCover, songs);
-      log('completed download. Files saved in: ' + downloadPath);
+      Log('Files saved in: ' + downloadPath);
     }
   } catch (err) {
     if (err.code) return console.error('ERROR: ' + err.code);

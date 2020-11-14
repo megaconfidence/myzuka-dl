@@ -1,7 +1,7 @@
 import chalk from 'chalk';
 import figlet from 'figlet';
 
-const branding = () => {
+const Branding = () => {
   console.log(
     chalk.green.bold(
       figlet.textSync('myzuka-dl', {
@@ -11,4 +11,4 @@ const branding = () => {
   );
 };
 
-export default branding;
+export default Branding;

@@ -32,7 +32,7 @@
     "restart": "rimraf dist && yarn build && yarn start",
     "start": "node dist/index.js",
     "test": "echo \"No test specified\"",
-    "publish": "npm login && np"
+    "publish": "np"
   },
   "devDependencies": {
     "@babel/cli": "^7.12.1",

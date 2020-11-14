@@ -8,7 +8,7 @@ import { Branding, Log, CustomError, CustomLog } from './utils';
 
 const start = async () => {
   try {
-    Branding();
+    if (process.platform !== 'android') Branding();
 
     const link = argv._[0] || readline.question(CustomLog('enter link: '));
     if (!isURL(link)) throw new CustomError('INVALIDURL');

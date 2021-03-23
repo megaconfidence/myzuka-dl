@@ -1,6 +1,6 @@
 {
   "name": "myzuka-dl",
-  "version": "1.1.9",
+  "version": "1.1.10",
   "main": "index.js",
   "description": "A music album downloading tool",
   "keywords": [

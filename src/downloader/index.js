@@ -5,6 +5,7 @@ import { ForEach, Log } from '../utils';
 import downloadsFolder from 'downloads-folder';
 
 const dl = async (downloadPath, albumCover, songs) => {
+  songs = songs.filter(s => Object.keys(s).length !== 0);
   const length = songs.length;
 
   if (albumCover) {
